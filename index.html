@@ -124,8 +124,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .cc li{margin:2px 0}
 .en{color:var(--mute);font-size:14px;margin-top:6px}
 .vf{display:inline-block;margin-top:10px;font-size:14px;font-weight:600}
-.photo{position:absolute;right:max(5vw,16px);bottom:clamp(40px,7vw,88px);width:clamp(180px,22vw,280px);aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid var(--acc);box-shadow:0 0 0 10px color-mix(in srgb,var(--acc) 12%,transparent)}
-@media(max-width:820px){.photo{position:static;display:block;width:132px;margin-bottom:22px}}
+.photo{position:absolute;right:max(5vw,16px);bottom:clamp(40px,7vw,88px);width:clamp(180px,22vw,280px);height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:50%;border:3px solid var(--acc);box-shadow:0 0 0 10px color-mix(in srgb,var(--acc) 12%,transparent)}
+@media(max-width:820px){.photo{position:static;display:block;width:132px;height:132px;margin-bottom:22px}}
 footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--mute);font-size:14px}
 @media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.links{gap:14px}.links a{font-size:14px}.hero{min-height:82svh}}
