@@ -43,6 +43,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .role b{color:var(--ink);font-weight:600}
 .cursor{display:inline-block;width:2px;height:1em;background:var(--acc);vertical-align:-.12em;margin-left:3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
+.tagline{margin-top:10px;max-width:46ch;font-size:clamp(16px,1.6vw,19px);color:var(--ink)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .chip{border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);padding:7px 14px;border-radius:999px;font-size:14px;color:var(--ink);white-space:nowrap}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
@@ -144,6 +145,7 @@ footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--m
     <img class="photo" src="reza.jpg" alt="Reza Zamani" width="640" height="640">
     <h1 class="name">Reza<br><span>Zamani.</span></h1>
     <div class="role">I work on <b id="typed">quantitative research</b><span class="cursor"></span></div>
+    <p class="tagline">I apply empirical methods and machine learning models in economics, finance and interdisciplinary fields.</p>
     <div class="chips"><span class="chip">UC Berkeley MFE '27</span><span class="chip">Ph.D. Economics</span><span class="chip">Python · C++ · MATLAB · Stata</span><a class="chip ai" href="#education">AI: Stanford · MIT · Berkeley</a></div>
     <div class="cta"><a class="btn main" href="Reza_Zamani_CV.pdf" target="_blank" rel="noopener">Download CV</a><a class="btn ghost" href="https://github.com/rezazamani2329">GitHub</a><a class="btn ghost" href="https://www.linkedin.com/in/reza-zamani-">LinkedIn</a></div>
   </div>
@@ -153,8 +155,8 @@ footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--m
   <div class="two">
     <h2>About me</h2>
     <div class="about">
-      <p class="lead">I am a quantitative researcher with a Ph.D. in Economics, completing the Master of Financial Engineering at UC Berkeley Haas. I build models that turn large financial datasets into signals, forecasts and decisions.</p>
-      <p>My work spans asset pricing, financial machine learning, intraday futures and fixed income. Through Berkeley MFE industry projects with BlackRock and Franklin Templeton, I applied these methods to real investment questions, and I am developing a working paper on the signal in macroeconomic releases.</p>
+      <p class="lead">I am a quantitative researcher with a Ph.D. in Economics, completing the Master of Financial Engineering at UC Berkeley Haas. I apply empirical methods and machine learning models in economics, finance and interdisciplinary fields, building models that turn large datasets into signals, forecasts, risk measures and decisions.</p>
+      <p>My work spans asset pricing, financial machine learning, risk analysis and management, intraday futures and fixed income. Through Berkeley MFE industry projects with BlackRock and Franklin Templeton, I applied these methods to real investment questions, and I am developing a working paper on the signal in macroeconomic releases.</p>
       <p>Before the MFE, I taught macroeconomics at the Ph.D. and Master's levels, supervised dissertations in finance and forecasting, and worked on fiscal and monetary policy analysis. I also managed securities issuance end to end at Central Asset Management Company and served as Director of Budgeting for a university of more than 15,000 students. I have worked as a data scientist and AI engineer, and I have trained in AI at Stanford (AI Professional Program, in progress), MIT Professional Education (Applied Generative AI for Digital Transformation) and UC Berkeley (Professional Certificate in Machine Learning and AI).</p>
     </div>
   </div>
@@ -406,7 +408,7 @@ const draw=()=>{
 };
 const ro=new ResizeObserver(draw);ro.observe(s);
 
-const words=["quantitative research","financial machine learning","asset pricing","fixed income","economics"];
+const words=["quantitative research","financial machine learning","risk analysis and management","asset pricing","fixed income","economics"];
 const el=document.getElementById("typed");
 const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
 if(!still){
