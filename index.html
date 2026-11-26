@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reza Zamani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE personal portfolio for a quant researcher, calm and confident, dark like the reference site
+   IDEA a research terminal at night: simulated price paths glowing behind the name
+   PICTURE full-bleed Monte Carlo fan of price paths, drawn live, name in its quiet lower-left corner
+   COLOUR deep green-black ground, off-white ink, mint accent #7fe0c4, soft sea-glass support #3f6f66
+   TYPE Inter Tight 800 for the name and headings + Inter for text
+   LAYOUT laptop: hero full width, name bottom-left over the fan; sections as wide bands, two columns; phone: stack */
+:root{color-scheme:dark;--bg:#0b1211;--bg2:#101a18;--card:#13201d;--line:#22332f;--ink:#e9f1ee;--mute:#9db1ab;--acc:#7fe0c4;--sup:#3f6f66}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;letter-spacing:-.02em;line-height:1.05;margin:0}
+h2{font-size:clamp(32px,4.5vw,48px);font-weight:800}
+h3{font-size:19px;font-weight:700;line-height:1.25}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(48px,7vw,96px);padding-inline:max(5vw,16px)}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(5vw,16px);flex-wrap:wrap}
+.logo{font-family:"Inter Tight",sans-serif;font-weight:800;font-size:18px;color:var(--ink)}
+.links{display:flex;gap:22px;flex-wrap:wrap}
+.links a{color:var(--mute);font-weight:500;font-size:15px}
+.links a:hover{color:var(--ink);text-decoration:none}
+.hero{position:relative;min-height:min(88svh,820px);display:flex;align-items:flex-end;overflow:hidden;background:radial-gradient(120% 90% at 80% 20%,#14302a 0%,var(--bg) 60%)}
+.hero .fig{position:absolute;inset:0}
+.hero svg{width:100%;height:100%;display:block}
+.hero .txt{position:relative;padding:0 max(5vw,16px) clamp(40px,7vw,88px);width:100%;max-width:1240px;margin:0 auto}
+.name{font-size:clamp(52px,10vw,124px);font-weight:800;line-height:.95}
+.name span{color:var(--acc)}
+.role{margin-top:18px;font-size:clamp(20px,2.4vw,28px);font-family:"Inter Tight",sans-serif;font-weight:600;color:var(--mute);min-height:1.3em}
+.role b{color:var(--ink);font-weight:600}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--acc);vertical-align:-.12em;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);padding:7px 14px;border-radius:999px;font-size:14px;color:var(--ink);white-space:nowrap}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--acc)}
+.btn.main{background:var(--acc);color:#06201a}
+.btn.ghost{color:var(--acc)}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(28px,5vw,72px);align-items:start}
+.lead{font-size:18px;color:var(--ink)}
+.about p+p{margin-top:16px;color:var(--mute)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px;margin-top:40px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.sk h3{font-size:15px;color:var(--acc);margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:14px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--ink)}
+.alt{background:var(--bg2)}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 30px 26px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg2);border:2px solid var(--acc)}
+.tl .when{font-size:14px;color:var(--acc);font-weight:600;white-space:nowrap}
+.tl .org{color:var(--mute);font-size:15px;margin-top:2px}
+.tl p{color:var(--mute);margin-top:8px;font-size:15px}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin-top:32px}
+.ed{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ed .org{color:var(--mute);font-size:15px;margin-top:4px}
+.ed .when{color:var(--acc);font-size:14px;font-weight:600;margin-top:6px}
+.sub{font-size:20px;margin:0 0 20px;color:var(--ink)}
+.proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px;margin-top:36px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pc svg{display:block;width:100%;height:120px;background:#0e1816}
+.pc .b{padding:18px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pc .k{font-size:13px;color:var(--acc);font-weight:600}
+.pc p{color:var(--mute);font-size:15px}
+.pc .more{margin-top:auto;font-weight:600;font-size:15px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:32px}
+.ct{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.ct .l{color:var(--mute);font-size:14px}
+.ct a,.ct .v{display:block;margin-top:4px;font-size:17px;font-weight:600;overflow-wrap:anywhere}
+.cvnote{margin-top:22px;color:var(--mute);font-size:15px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.filters button{font:600 15px Inter,sans-serif;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mute);cursor:pointer}
+.filters button[aria-selected=true]{background:var(--acc);color:#06201a;border-color:var(--acc)}
+.repos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:14px;margin-top:22px}
+.rp{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink)}
+.rp:hover{border-color:var(--acc);text-decoration:none}
+.rp h3{font-size:16px}
+.rp p{color:var(--mute);font-size:14px}
+.rp .lg{margin-top:auto;font-size:13px;color:var(--acc);font-weight:600}
+.pubs{display:grid;gap:14px}
+.pub{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.pub .st{font-size:13px;color:var(--acc);font-weight:600;margin-bottom:6px}
+.pub p{color:var(--mute);font-size:15px;margin-top:8px}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin-top:32px}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.cert .seal{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--acc);display:grid;place-items:center;color:var(--acc);font:800 15px "Inter Tight",sans-serif}
+.cert .org{color:var(--mute);font-size:14px;margin-top:4px}
+.cert .when{color:var(--acc);font-size:13px;font-weight:600;margin-top:6px}
+.met{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:4px}
+.met .ml{font-size:13px;color:var(--mute)}
+.mr{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.mr b{color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ml2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:0 32px}
+.ml2 li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ml2 h3{font-size:16px}
+.ml2 h3 a{color:var(--ink)}
+.ml2 p{color:var(--mute);font-size:14px;margin-top:4px}
+.ml2 .yr{color:var(--acc);font-size:13px;font-weight:600;white-space:nowrap}
+.pl{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:0 36px}
+.pl li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pl .py{color:var(--acc);font-weight:700;font-variant-numeric:tabular-nums}
+.pl h3{font-size:16px;line-height:1.35}
+.pl .au{color:var(--mute);font-size:14px;margin-top:4px}
+.pl .au b{color:var(--ink);font-weight:600}
+.pl .ve{color:var(--mute);font-size:14px;font-style:italic;margin-top:2px}
+.pl .pt{font-style:normal;margin-left:8px;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--acc)}
+.chip.ai{border-color:var(--acc);color:var(--acc)}
+.chip.ai:hover{text-decoration:none;background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.cc{margin:8px 0 0;padding-left:18px;color:var(--ink);font-size:14px}
+.cc li{margin:2px 0}
+.en{color:var(--mute);font-size:14px;margin-top:6px}
+.vf{display:inline-block;margin-top:10px;font-size:14px;font-weight:600}
+footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--mute);font-size:14px}
+@media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.links{gap:14px}.links a{font-size:14px}.hero{min-height:82svh}}
+@media(prefers-reduced-motion:reduce){.cursor{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#top">REZA ZAMANI</a>
+  <div class="links"><a href="Reza_Zamani_CV.pdf" target="_blank" rel="noopener">CV</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#github">GitHub</a><a href="#papers">Papers</a><a href="#certs">Certificates</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="fig"><svg id="paths" aria-hidden="true"></svg></div>
+  <div class="txt">
+    <h1 class="name">Reza<br><span>Zamani.</span></h1>
+    <div class="role">I work on <b id="typed">quantitative research</b><span class="cursor"></span></div>
+    <div class="chips"><span class="chip">UC Berkeley MFE '27</span><span class="chip">Ph.D. Economics</span><span class="chip">Python · C++ · MATLAB · Stata</span><a class="chip ai" href="#education">AI: Stanford · MIT · Berkeley</a></div>
+    <div class="cta"><a class="btn main" href="Reza_Zamani_CV.pdf" target="_blank" rel="noopener">Download CV</a><a class="btn ghost" href="https://github.com/rezazamani2329">GitHub</a><a class="btn ghost" href="https://www.linkedin.com/in/reza-zamani-">LinkedIn</a></div>
+  </div>
+</header>
+
+<section class="band" id="about"><div class="wrap">
+  <div class="two">
+    <h2>About me</h2>
+    <div class="about">
+      <p class="lead">I am a quantitative researcher with a Ph.D. in Economics, completing the Master of Financial Engineering at UC Berkeley Haas. I build models that turn large financial datasets into signals, forecasts and decisions.</p>
+      <p>My work spans asset pricing, financial machine learning, intraday futures and fixed income. Through Berkeley MFE industry projects with BlackRock and Franklin Templeton, I applied these methods to real investment questions, and I am developing a working paper on the signal in macroeconomic releases.</p>
+      <p>Before the MFE, I taught macroeconomics at the Ph.D. and Master's levels, supervised dissertations in finance and forecasting, and worked on fiscal and monetary policy analysis. I also managed securities issuance end to end at Central Asset Management Company and served as Director of Budgeting for a university of more than 15,000 students. I have worked as a data scientist and AI engineer, and I have trained in AI at Stanford (AI Professional Program, in progress), MIT Professional Education (Applied Generative AI for Digital Transformation) and UC Berkeley (Professional Certificate in Machine Learning and AI).</p>
+    </div>
+  </div>
+  <div class="skills" id="skills"></div>
+</div></section>
+
+<section class="band alt" id="experience"><div class="wrap">
+  <div class="two">
+    <h2>Experience</h2>
+    <ul class="tl" id="tl"></ul>
+  </div>
+</div></section>
+
+
+<section class="band" id="education"><div class="wrap">
+  <h2>Education</h2>
+  <p class="lead" style="margin-top:14px;max-width:62ch">Degrees and university programs in financial engineering, artificial intelligence and economics.</p>
+  <div class="edu" id="edu"></div>
+</div></section>
+
+<section class="band alt" id="projects"><div class="wrap">
+  <h2>Selected projects</h2>
+  <div class="proj" id="proj"></div>
+  <h3 class="sub" style="margin-top:56px">More projects</h3>
+  <ul class="ml2" id="morelist"></ul>
+</div></section>
+
+
+<section class="band" id="github"><div class="wrap">
+  <h2>All my GitHub repositories</h2>
+  <p class="lead" style="margin-top:14px;max-width:62ch">Code and notebooks from my research, the Berkeley MFE and my AI/ML training.</p>
+  <div class="filters" id="filters" role="tablist"></div>
+  <div class="repos" id="repos"></div>
+</div></section>
+
+<section class="band alt" id="papers"><div class="wrap">
+  <h2>Papers &amp; publications</h2>
+  <p class="lead" style="margin-top:14px;max-width:62ch">Research in macroeconomics, political economy, public debt, corruption and energy, and more recently quantitative finance and AI/ML. Full list on <a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  <div class="filters" id="pubfilters" role="tablist"></div>
+  <ol class="pl" id="pubs"></ol>
+</div></section>
+
+<section class="band" id="certs"><div class="wrap">
+  <h2>Certificates &amp; training</h2>
+  <div class="certs" id="certlist"></div>
+</div></section>
+
+<section class="band alt" id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p class="lead" style="margin-top:16px;max-width:62ch">I am open to quantitative research, financial machine learning, quantitative trading and economist roles.</p>
+  <div class="contact">
+    <div class="ct"><div class="l">Email</div><a href="mailto:rezazamani@berkeley.edu">rezazamani@berkeley.edu</a></div>
+    <div class="ct"><div class="l">LinkedIn</div><a href="https://www.linkedin.com/in/reza-zamani-">linkedin.com/in/reza-zamani-</a></div>
+    <div class="ct"><div class="l">Google Scholar</div><a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">scholar.google.com</a></div>
+    <div class="ct"><div class="l">GitHub</div><a href="https://github.com/rezazamani2329">github.com/rezazamani2329</a></div>
+    <div class="ct"><div class="l">Based in</div><span class="v">California, USA</span></div>
+  </div>
+  <p class="cvnote"><a class="btn main" href="Reza_Zamani_CV.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a></p>
+</div></section>
+
+<footer><div class="wrap">© 2026 Reza Zamani</div></footer>
+
+<script>
+{
+const skills=[
+ ["Programming",["Python","C++","MATLAB","SQL","NumPy","Pandas","Stata","Git"]],
+ ["Machine learning & AI",["Deep learning","PyTorch","TensorFlow","NLP","LLMs","Generative AI","Predictive modeling"]],
+ ["Quantitative finance",["Asset pricing","Option pricing","Monte Carlo","Fixed income","Structured finance","Financial engineering"]],
+ ["Econometrics & statistics",["Time series","Causal inference","Difference-in-differences","Synthetic control","A/B testing","Forecasting"]]
+];
+document.getElementById("skills").innerHTML=skills.map(([t,l])=>`<div class="sk"><h3>${t}</h3><div class="tags">${l.map(x=>`<span class="tag">${x}</span>`).join("")}</div></div>`).join("");
+
+const jobs=[
+ ["Aug 2026 – Oct 2026","Quantitative Researcher","BlackRock · Berkeley MFE industry project · San Francisco","Research on intraday futures around macroeconomic releases, which grew into a working paper."],
+ ["Mar 2026 – May 2026","Quantitative Researcher","Franklin Templeton · Berkeley MFE industry project · San Francisco","Applied quantitative methods to an investment research question for the firm."],
+ ["Mar 2026 – Present","Quantitative Researcher","UC Berkeley Haas School of Business","Research in financial machine learning, asset pricing and trading signals."],
+ ["Apr 2025 – Mar 2026","Data Scientist, AI/ML","Terasaki Institute · Los Angeles","Machine learning and AI models on large research datasets."],
+ ["Apr 2025 – Aug 2025","AI Engineer","BrightFoxAI · Los Angeles","Built AI and LLM-based tools."],
+ ["Jan 2023 – Mar 2026","Financial Advisor","Central Asset Management Company","Led securities issuance end to end: financial review of the originator, issuance limits, asset transfer, issuance, collections and settlement."],
+ ["Apr 2024 – Dec 2024","Data Scientist","UC Berkeley Haas School of Business","Data science and empirical research."],
+ ["Jan 2021 – Feb 2024","Visiting Assistant Professor","Philipps University of Marburg, Germany","Research and teaching in economics."],
+ ["Sep 2014 – Dec 2020","Assistant Professor of Economics","Allameh Tabataba'i University","Taught macroeconomics at the Ph.D. and Master's levels, supervised dissertations in finance and forecasting, and worked on fiscal and monetary policy analysis."],
+ ["Oct 2017 – Sep 2018","Director of Budgeting","Allameh Tabataba'i University","Led budget planning and resource allocation for a university of more than 15,000 students."],
+ ["Oct 2013 – Feb 2016","Quantitative Researcher","Iranian Mercantile Exchange","Quantitative research on exchange-traded markets."]
+];
+document.getElementById("tl").innerHTML=jobs.map(([w,t,o,d])=>`<li><div class="when">${w}</div><h3>${t}</h3><div class="org">${o}</div><p>${d}</p></li>`).join("");
+
+const edu=[
+ ["Master of Financial Engineering","UC Berkeley, Haas School of Business","2026 – 2027","",""],
+ ["Artificial Intelligence Professional Program","Stanford University","Jun 2026 – Jan 2027 (in progress)","",""],
+ ["Professional Certificate in Machine Learning and Artificial Intelligence","UC Berkeley Executive Education (Berkeley Engineering and Berkeley Haas)","Completed Mar 2025","Capstone: predicting credit card default with ML","https://certificates.emeritus.org/8cb1c117-010c-449e-9b41-30727021c90b"],
+ ["Applied Generative AI for Digital Transformation","MIT Professional Education","Sep – Nov 2025 · 64 hours","","https://www.credential.net/eca15c82-227c-4618-b937-5e567477f69e"],
+ ["Ph.D. Economics","Allameh Tabataba'i University","2006 – 2013","",""],
+ ["M.S. Economics","University of Tehran","2001 – 2006","",""],
+ ["B.S. Civil Engineering","University of Tehran","1995 – 2001","",""]
+];
+document.getElementById("edu").innerHTML=edu.map(([d,sc,w,n,u])=>`<div class="ed"><h3>${d}</h3><div class="org">${sc}</div><div class="when">${w}</div>${n?(Array.isArray(n)?`<div class="en">Courses:</div><ul class="cc">${n.map(x=>`<li>${x}</li>`).join("")}</ul>`:`<p class="en">${n}</p>`):""}${u?`<a class="vf" href="${u}">Verify credential</a>`:""}</div>`).join("");
+
+const proj=[
+ ["BlackRock · Berkeley MFE industry project","S&P 500 Futures and Macroeconomic Surprises","Intraday event study of how U.S. macro releases move E-mini S&P 500, Nasdaq-100, Dow and 10-year Treasury futures. Walk-forward backtest of surprise signals, pre-release conditions and Dynamic Time Warping patterns after costs; CPI gave the clearest signal.","spike","Macro-relases-signal",[["S&P 500","0.65"],["Nasdaq-100","0.71"],["Dow","0.68"]],"Walk-forward net Sharpe"],
+ ["Berkeley MFE · Asset-backed securities","Mortgage Credit Risk: Freddie Mac STACR 2026-DNA1","Built and calibrated prepayment, default and loss-severity models, and projected reference-pool cash flows under rate and house-price scenarios for the team's tranche waterfall and pricing.","bars","Asset-Backed-Security-Market--UC-Berkeley-MFE-program",null,""],
+ ["Berkeley MFE · Equity markets","Conditional Lead-Lag Alpha","Point-in-time CRSP equities, 1996–2024: rank ICs, signal decay and long-short quintiles against reversal baselines. The effect was concentrated early and uneconomic after costs.","lag","Equity-Market-UC-Berkeley_MFE",[["1996–2006","0.0206 (t 7.97)"],["2007–2024","0.0025 (t 1.02)"]],"Next-day lead-lag coefficient"],
+ ["Research","Deep Learning in Asset Pricing","Replicated and extended Chen, Pelger and Zhu's deep-learning stochastic discount factor. Compared LSTM and causal Transformer encoders in PyTorch, with a paired block bootstrap for uncertainty.","net","Deep-Learning-in-Asset-Pricing-Replication-and-Extensions",[["LSTM","0.459"],["Transformer","0.304"],["Blend","0.463"]],"Monthly test Sharpe"],
+ ["Berkeley MFE · Currency markets","Crowded Carry: Crash Risk in FX and Crypto","G10 FX carry versus crypto perpetual-futures funding carry, using CFTC positioning to measure crowding; backtests after costs, drawdowns and diversification.","carry","currency-crypto-carry",[["Baseline","0.27"],["Crowding filter","0.32"]],"G10 FX out-of-sample net Sharpe"],
+ ["Berkeley MFE · High-frequency finance","High-Frequency Trading Signals Under Realistic Execution","Moving-average, support-resistance and order-flow-imbalance signals in NVDA, QRVO and EUR/USD futures, with fills at the touch and 100 ms to 1 s execution delays.","walk","High-Frequency-Finance-MFE",null,""],
+ ["Berkeley MFE · Risk management","Equity Portfolio Risk: VaR and Backtesting","One-day 95% VaR for a simulated $10M portfolio: parametric versus historical simulation, marginal VaR, bootstrap intervals and exception backtests.","bars","Risk-Management-MFE-UC-Berkeley-",null,""],
+ ["Berkeley · Financial data science","Financial ML: Stock Return Prediction","Cross-sectional forecasts from firm characteristics, panel models for daily returns, and CNNs on stock-chart images for five-day returns.","net","Financial-Machine-Learning-Predictive-Analytics-UC-Berkeley",null,""]
+];
+const more=[
+ ["Credit card default prediction","Eight classifiers with tuning; XGBoost best, with SHAP feature importance.","AIML-UC-Berkeley-Capstone-Project-REZA-ZAMANI","2025"],
+ ["NLP text classification","Twitter and WhatsApp data; logistic regression reached 99.88% accuracy.","AIML-UC-Berkeley-NLP-Text-Classification-Twitter-and-WhatsApp-analysis-","2025"],
+ ["Stock market prediction and backtesting","AI/ML and generative AI for trading signals.","MFE_Stock_market_Trading-backtesting-AIML","2025–2026"],
+ ["Stock market risk analysis","Risk analysis of equity data.","Stock-market-analysis","2025–2026"],
+ ["Generative AI","Prompt evaluation, Hugging Face and diffusion fine-tuning.","AIML-UC-Berkeley-Generative-AI","2025"],
+ ["Deep learning and neural networks","CNNs and LSTMs for vision and time series.","AIML-UC-Berkeley--Deep-Learning-","2025"],
+ ["Breast cancer classification","SVM, decision trees, KNN and logistic regression.","AIML--UC-Berkeley-cancer-classification--SVM-DT-KNN-and-Logistic-","2024–2025"],
+ ["Marketing campaigns in banking","ML evaluation of bank marketing strategy.","AIML-UC-Berkeley--campaign-marketing-analysis-in-banking-system","2024–2025"],
+ ["Ensemble models","Combining algorithms to improve prediction.","AIML-UC-Berkeley-Ensemble-models","2024–2025"],
+ ["Drivers of used-car prices","426K-row Kaggle dataset with several ML models.","AIML--UC-Berkeley--What-drives-the-price-of-a-car","2024"],
+ ["Bar coupon acceptance","Exploratory analysis of drivers' coupon decisions.","AIML-UC-Berkeley-feature-engineering-and-exploratory-Data-Analysis-EDA-to-driver-s-decision-to-ac","2024"],
+ ["Digital economy and economic development","With my Ph.D. students: drivers of the digital economy across countries.","","2022–2023"]
+];
+const G="https://github.com/rezazamani2329/";
+
+const repos=[
+ ["q","Macro Releases Signal","Macro-relases-signal","Intraday futures around macroeconomic releases.","Jupyter"],
+ ["q","Asset-Backed Securities Market","Asset-Backed-Security-Market--UC-Berkeley-MFE-program","Asset-backed securities markets.","Jupyter"],
+ ["q","Currency & Crypto Carry","currency-crypto-carry","Carry strategies in currency and crypto markets.","Jupyter"],
+ ["q","High-Frequency Finance","High-Frequency-Finance-MFE","High-frequency data and market microstructure.","Jupyter"],
+ ["q","Deep Learning in Asset Pricing","Deep-Learning-in-Asset-Pricing-Replication-and-Extensions","Replication and extensions.","Jupyter"],
+ ["q","Equity Markets: Lead-Lag Alpha","Equity-Market-UC-Berkeley_MFE","Conditional lead-lag alpha signals.","Jupyter"],
+ ["q","Reinforcement Learning & Asset Choice","Reinforcement-Learning-and-Asset-Choice","Reinforcement learning for portfolio choice.",""],
+ ["q","Risk Management","Risk-Management-MFE-UC-Berkeley-","Market and portfolio risk models.","Jupyter"],
+ ["q","Financial ML & Predictive Analytics","Financial-Machine-Learning-Predictive-Analytics-UC-Berkeley","Machine learning and deep learning applications in finance.","Jupyter"],
+ ["q","Fixed Income","Fixed-Income-MFE_UC-Berkeley","Yield curve, interest rates and interest-rate derivatives.",""],
+ ["q","Option Pricing & Derivatives","Option-Pricing-Derivatives_MFE-","Option pricing, Monte Carlo and finite differences.","Jupyter"],
+ ["q","Investment & Derivatives","Investment-and-Derivatives","Investments and derivatives.","Jupyter"],
+ ["q","Stochastic Calculus for Asset Pricing","Stochastic-Calculus-with-Asset-pricing-Applications-","Stochastic calculus with asset pricing applications.",""],
+ ["q","Empirical Methods in Finance","Empirical-Methods-in-Finance-","Empirical and econometric methods in finance.","Jupyter"],
+ ["q","Stock Market Analysis","Stock-market-analysis","Stock market data analysis.","Jupyter"],
+ ["q","Stock Trading & Backtesting with AI/ML","MFE_Stock_market_Trading-backtesting-AIML","Stock prediction and backtesting with AI/ML and generative AI.","Jupyter"],
+ ["q","Mathematics for Engineering","Mathematics-for-Engineering","Engineering mathematics.","MATLAB"],
+ ["a","Stanford CS231: Deep Learning for Computer Vision","Stanford-231-Deep-Learning-for-Computer-Vision","Deep learning for computer vision.","Jupyter"],
+ ["a","Generative AI","AIML-UC-Berkeley-Generative-AI","UC Berkeley AI/ML program.","Jupyter"],
+ ["a","Capstone Project","AIML-UC-Berkeley-Capstone-Project-REZA-ZAMANI","UC Berkeley AI/ML capstone.","Jupyter"],
+ ["a","Capstone Project: Module 20 Report","AIML-UC-Berkeley--Capstone-Project-1--Reza-Zamani-report-for-Module-20","UC Berkeley AI/ML capstone report.","Jupyter"],
+ ["a","Deep Learning","AIML-UC-Berkeley--Deep-Learning-","UC Berkeley AI/ML program.","Jupyter"],
+ ["a","Neural Networks","AIML-UC-Berkeley-Neural-Networks-1","UC Berkeley AI/ML program.","Jupyter"],
+ ["a","NLP Text Classification","AIML-UC-Berkeley-NLP-Text-Classification-Twitter-and-WhatsApp-analysis-","Text classification of Twitter and WhatsApp data.","Jupyter"],
+ ["a","Anomaly Detection Methods","Anomaly-Detection-Methods-","Methods for anomaly detection.","Jupyter"],
+ ["a","Ensemble Models","AIML-UC-Berkeley-Ensemble-models","UC Berkeley AI/ML program.","Jupyter"],
+ ["a","Kernel Trick in Classification","AIML--UC-Berkeley-Kernel-Trick-in-classification-","UC Berkeley AI/ML program.","Jupyter"],
+ ["a","Cancer Classification","AIML--UC-Berkeley-cancer-classification--SVM-DT-KNN-and-Logistic-","SVM, decision trees, KNN and logistic regression.","Jupyter"],
+ ["a","What Drives the Price of a Car","AIML--UC-Berkeley--What-drives-the-price-of-a-car","Main drivers of used-car prices.","Jupyter"],
+ ["a","Feature Engineering & EDA","AIML-UC-Berkeley-feature-engineering-and-exploratory-Data-Analysis-EDA-to-driver-s-decision-to-ac","Exploratory data analysis of drivers' decisions.","Jupyter"],
+ ["a","Campaign Marketing in Banking","AIML-UC-Berkeley--campaign-marketing-analysis-in-banking-system","Marketing campaign analysis for a bank.","Jupyter"]
+];
+const cats=[["all","All"],["q","Quant finance"],["a","AI & machine learning"]];
+const fEl=document.getElementById("filters"),rEl=document.getElementById("repos");
+const showRepos=c=>{
+  fEl.innerHTML=cats.map(([k,l])=>`<button role="tab" id="f-${k}" aria-selected="${k===c}" data-k="${k}">${l} (${k==="all"?repos.length:repos.filter(r=>r[0]===k).length})</button>`).join("");
+  rEl.innerHTML=repos.filter(r=>c==="all"||r[0]===c).map(([k,t,slug,d,lg])=>`<a class="rp" href="${G}${slug}"><h3>${t}</h3><p>${d}</p><span class="lg">${lg?lg+" · ":""}View on GitHub</span></a>`).join("");
+};
+fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b)showRepos(b.dataset.k)});
+showRepos("all");
+
+const pubs=[
+ ["Working paper","2026","Where Is the Signal in Macroeconomic Releases? Surprises versus Price Patterns in Intraday Futures","R. Zamani","In preparation, developed from the BlackRock MFE project"],
+ ["Preprint","2026","BioEVAL: A Global, Multi-institutional Benchmark of Large Language and Multimodal Models for Bioengineering","S. Ye, V. C. Suja, C. Li, C. Jiang, R. Zamani, X. Li, C. Bain, Y. Zhou, W. Peterson, et al.","arXiv preprint arXiv:2609.30489"],
+ ["Journal","2026","KLEAR: An AI/ML-Driven Tool for Predicting Acute Rejection in Deceased-Donor Kidney Transplantation Using High-Resolution HLA Mismatch and Clinical Data","T. Jarmi, S. Kawakita, M. Elrefaei, J. Wang, J. He, H. Khamash, A. Jaramillo, et al., including R. Zamani","American Journal of Transplantation 26(7), S279"],
+ ["Journal","2026","Analysis of Government Debt Sustainability in Iran Over the Past Half-Century","A. Ghodsi Dehaghi, R. Zamani, M. Ghasemi","Economic Research and Perspectives 26(1), 159–198"],
+ ["Journal","2024","The Effect of Corruption on Internal Conflict in Iran Using Newspaper Coverage","M. R. Farzanegan, R. Zamani","Defence and Peace Economics 35(1), 24–43"],
+ ["Journal","2024","Oil Rents Shocks and Corruption in Iran","M. R. Farzanegan, R. Zamani","Review of Development Economics"],
+ ["Journal","2024","Impact of Energy Price Reform on Energy Intensity in Iranian Manufacturing Industries","R. Zamani, M. N. Shahiki Tash, et al.","Energy Efficiency 17, 71"],
+ ["Working paper","2024","Does the Trillion-Dollar Cost of Sanctions Matter for Iranian Economic Development?","R. Zamani","Economic Research Forum (ERF)"],
+ ["Journal","2024","Fiscal Policy in a Recessionary Economy with High Debt: An Application of Control Theory","V. Shahabinejad, A. Nassiri Aghdam, R. Zamani, M. Mollaei Emamzade","Journal of Fiscal and Economic Policies 12(45), 143–173"],
+ ["Journal","2024","A Model for the Impact of Ethical Leadership on the Effectiveness of the Audit Team","R. Zamani, M. Lari Dashtbayaz, R. Hesarzadeh","Transformation Management Journal 16"],
+ ["Working paper","2023","Does Oil Corrupt? Evidence from a Multivariate VAR in Iran","M. R. Farzanegan, R. Zamani","MAGKS Joint Discussion Paper Series in Economics"],
+ ["Journal","2023","Interaction between Financial Cycles and Business Cycles in Iran: A Bayesian Approach","F. Soleimani, M. N. Shahiki Tash, G. Zamanian, R. Zamani","Iranian Economic Review 27(2), 583–617"],
+ ["Journal","2023","Political Economy of the Budgeting System in Iran: A Social Order Approach (1906–1925)","H. R. Ghasemi, A. A. Yazdi, R. Zamani","Iranian Journal of Economic Research 27(93), 61–104"],
+ ["Journal","2022","Proposing a Policy for Debt Management in Iran's Seventh Development Plan","R. Zamani, M. Majidi","Journal of Economic Research 22(87), 193–223"],
+ ["Journal","2022","Impact of Export Diversification and Export Composition on Economic Growth of Iran","A. Shakeri, R. Zamani, H. Vartabian Kashani","Economic Growth and Development Research 12(46)"],
+ ["Journal","2021","The Effect of Political Instability on Economic Growth in Iran between Two Revolutions (1907–1979)","R. Zamani","Iranian Economic Review 25(4), 777–790"],
+ ["Journal","2021","Optimum and Threshold Rates of Government Debt in Iran","R. Zamani, M. Majidi","Economic Growth and Development Research 11(43)"],
+ ["Journal","2021","An Estimate of Tax Evasion by Self-employed Businesses in Iran Using the Household Expenditure Survey","R. Zamani, S. Mohsen Pourian","Economics Research 21(83), 75–118"],
+ ["Journal","2020","The Effect of Financial Cycles on Business Cycles in Iran: A Bayesian Averaging Approach","F. Soleimani, M. N. Shahiki Tash, G. Zamanian, R. Zamani","Journal of Economic Studies and Policies 7(2), 215–238"],
+ ["Journal","2019","Analyzing the Stability of Inflation from the Perspective of Iranian Political Economy","H. Sobhani, D. Aboohamzeh, R. Zamani","Journal of Economic Essays 16(31), 41–69"],
+ ["Journal","2019","The Effect of Socio-economic Variables on Bread Demand Using the AIDS Model","A. A. Salem, R. Zamani, N. S. Faghihi","Journal of Economic Research 19(74), 81–110"],
+ ["Journal","2019","Analysis of Changes in Social Order in Iran from the Constitutional Revolution to the Islamic Revolution (1906–1979)","R. Zamani","Economics Research 19(73), 75–118"],
+ ["Journal","2017","Iran's Political Economy Cycles since the Constitutional Revolution, 1907–2012","R. Zamani","Majlis & Rahbord 24(91), 5–34"],
+ ["Journal","2017","The Iranian Budgeting System since the Constitutional Revolution: Personal Identity and Inefficient Political Equilibrium","R. Zamani","Economic Strategy 6(22)"],
+ ["Journal","2016","Theoretical Foundations of Ineffectiveness and Extra Costs in Development Projects in Iran","D. Aboohamzeh, R. Zamani","Majlis and Rahbord 23(88), 69–106"],
+ ["Journal","2013","Long-term Policy-making Process on Development","F. Momeni, R. Zamani","Majlis and Rahbord 19(72), 5–38"],
+ ["Dissertation","2012","Iran's Economic Development over the Last Hundred Years: A Social Order Approach (North, Wallis and Weingast)","R. Zamani","Ph.D. dissertation, Department of Economics"],
+ ["Journal","2007","Co-integration Relation for Oil Production under Alternative Hypotheses about OPEC Behavior","A. Hemmati, R. Zamani","Iranian Economic Review 12(1), 27–49"]
+];
+const pf=document.getElementById("pubfilters"),pl=document.getElementById("pubs");
+const pcats=[["all","All"],["Journal","Journal articles"],["Working paper","Working papers & preprints"]];
+const grp=t=>t==="Preprint"?"Working paper":t;
+const showPubs=c=>{
+  pf.innerHTML=pcats.map(([k,l])=>`<button role="tab" id="p-${k.replace(/ /g,'-')}" aria-selected="${k===c}" data-k="${k}">${l} (${k==="all"?pubs.length:pubs.filter(p=>grp(p[0])===k).length})</button>`).join("");
+  pl.innerHTML=pubs.filter(p=>c==="all"||grp(p[0])===c).map(([t,y,ti,au,ve])=>`<li><span class="py">${y}</span><div><h3>${ti}</h3><div class="au">${au.replace("R. Zamani","<b>R. Zamani</b>")}</div><div class="ve">${ve}<span class="pt">${t}</span></div></div></li>`).join("");
+};
+pf.addEventListener("click",ev=>{const bt=ev.target.closest("button");if(bt)showPubs(bt.dataset.k)});
+showPubs("all");
+
+const certs=[
+ ["C","Causal Inference","Columbia University (Coursera)","Jun 2025 · 12 hours","https://coursera.org/verify/ZUWJC66Z6YXR",["Taught by Michael E. Sobel, Department of Statistics"]],
+ ["B","Math Foundations for Financial Engineers","UC Berkeley Executive Education, Haas Master of Financial Engineering","Dec 2025 – Jan 2026 · Credential ID 175346029","",[]],
+ ["B","Statistics for Financial Engineers","UC Berkeley Executive Education, Haas Master of Financial Engineering","Dec 2025 – Feb 2026 · Credential ID 175346451","",[]],
+ ["Y","Financial Markets","Yale University (Coursera)","Feb 2026","https://coursera.org/verify/JPXWDWH7W38H",["Taught by Robert J. Shiller, Sterling Professor of Economics"]],
+ ["I","Accelerated Computer Science Fundamentals","University of Illinois Urbana-Champaign (Coursera)","Mar 2026","https://www.coursera.org/account/accomplishments/specialization/FF0092WJ2AML",["Specialization, 3 courses","<a href=\"https://coursera.org/verify/CUSFKMEP0CYB\">Object-Oriented Data Structures in C++</a> (Feb 2026)","<a href=\"https://coursera.org/verify/48MLIVAFF2W4\">Ordered Data Structures</a> (Mar 2026)","<a href=\"https://coursera.org/verify/FVV10RWUYCMM\">Unordered Data Structures</a> (Mar 2026)","Algorithm run-time analysis, hash tables, trees, heaps and graphs"]],
+ ["H","Mathematics for Engineers","Hong Kong University of Science and Technology (Coursera)","Mar 2026","https://www.coursera.org/account/accomplishments/specialization/1RO9YRCMXIVG",["Specialization, 5 courses","<a href=\"https://coursera.org/verify/QB8R2FXHAS3N\">Differential Equations for Engineers</a> (Feb 2026)","<a href=\"https://coursera.org/verify/YFOX0M5EROUD\">Matrix Algebra for Engineers</a> (Feb 2026)","Vector calculus","Numerical methods in MATLAB","<a href=\"https://coursera.org/verify/5D3F4RNJBRU2\">The Capstone Course</a> (Mar 2026)"]],
+ ["F","Generative AI for Developers","Fractal Analytics (Coursera)","Jun 2025 · Specialization, 4 courses","https://coursera.org/verify/specialization/QONJJFFHXN97",["Generative AI Essentials: A Comprehensive Introduction","Coding with Generative AI","Generative AI: Your Personal Code Reviewer","Responsible AI in the Generative AI Era"]],
+ ["U","Advanced SQL Bootcamp","Udemy (Jose Portilla, Pierian Training)","Aug 2025 · 10.5 hours","https://www.udemy.com/certificate/UC-3529e708-fb8d-4d9c-b123-47616a7ae88b/",[]],
+ ["U","The Complete SQL Bootcamp: Go from Zero to Hero","Udemy (Jose Portilla, Pierian Training)","Jul 2025 · 9 hours","https://www.udemy.com/certificate/UC-94651689-b7eb-48ee-9c9c-cbfcdcb885f9/",[]]
+];
+document.getElementById("certlist").innerHTML=certs.map(([i,t,o,w,u,c])=>`<div class="cert"><div class="seal">${i}</div><div><h3>${t}</h3><div class="org">${o}</div>${w?`<div class="when">${w}</div>`:""}${c.length?`<ul class="cc">${c.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}${u?`<a class="vf" href="${u}">Verify credential</a>`:""}</div></div>`).join("");
+
+const R=s=>()=>(s=s*16807%2147483647)/2147483647;
+function mini(kind,i){
+  const r=R(97+i*31),W=400,H=120;let g="";
+  if(kind==="spike"){let y=70,p=`M0 ${y}`;for(let x=0;x<=W;x+=4){y+=(r()-.5)*4;if(x===200)y-=38;p+=` L${x} ${y.toFixed(1)}`}g=`<line x1="200" y1="10" x2="200" y2="110" stroke="#3f6f66" stroke-dasharray="4 4"/><path d="${p}" fill="none" stroke="#7fe0c4" stroke-width="2"/>`}
+  if(kind==="lag"){let a=60,p1="M0 60",p2="M0 70",hist=[];for(let x=0;x<=W;x+=5){a+=(r()-.5)*7;hist.push(a);p1+=` L${x} ${a.toFixed(1)}`;const b=hist[Math.max(0,hist.length-7)]+10;p2+=` L${x} ${b.toFixed(1)}`}g=`<path d="${p2}" fill="none" stroke="#3f6f66" stroke-width="2"/><path d="${p1}" fill="none" stroke="#7fe0c4" stroke-width="2"/>`}
+  if(kind==="net"){const L=[3,5,5,2],xs=[60,160,250,340];let n=[];L.forEach((c,k)=>{for(let j=0;j<c;j++)n.push([xs[k],60+(j-(c-1)/2)*20,k])});n.forEach(a=>n.forEach(b=>{if(b[2]===a[2]+1)g+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#3f6f66" stroke-width="1"/>`}));n.forEach(a=>g+=`<circle cx="${a[0]}" cy="${a[1]}" r="5" fill="#0e1816" stroke="#7fe0c4" stroke-width="2"/>`)}
+  if(kind==="bars"){for(let k=0;k<40;k++){const h=20+70*Math.exp(-((k-14)**2)/90)+r()*8;g+=`<rect x="${10+k*9.5}" y="${110-h}" width="7" height="${h}" rx="1.5" fill="${k%5?'#3f6f66':'#7fe0c4'}"/>`}}
+  if(kind==="walk"){let y=80,p="M0 80",eq="M0 95",e=95;for(let x=0;x<=W;x+=4){y+=(r()-.5)*6;e-=(r()-.42)*2;p+=` L${x} ${y.toFixed(1)}`;eq+=` L${x} ${e.toFixed(1)}`}g=`<path d="${p}" fill="none" stroke="#3f6f66" stroke-width="1.5"/><path d="${eq}" fill="none" stroke="#7fe0c4" stroke-width="2"/>`}
+  if(kind==="carry"){for(let k=0;k<12;k++){const v=(r()-.35)*80;g+=`<rect x="${14+k*32}" y="${v>0?60-v:60}" width="20" height="${Math.abs(v)}" rx="2" fill="${v>0?'#7fe0c4':'#3f6f66'}"/>`}g+=`<line x1="0" y1="60" x2="400" y2="60" stroke="#22332f"/>`}
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${g}</svg>`;
+}
+document.getElementById("proj").innerHTML=proj.map(([k,t,d,kind,url,m,ml],i)=>`<article class="pc">${mini(kind,i)}<div class="b"><div class="k">${k}</div><h3>${t}</h3><p>${d}</p>${m?`<div class="met"><div class="ml">${ml}</div>${m.map(([a,v])=>`<div class="mr"><span>${a}</span><b>${v}</b></div>`).join("")}</div>`:""}${url?`<a class="more" href="https://github.com/rezazamani2329/${url}">View on GitHub</a>`:""}</div></article>`).join("");
+document.getElementById("morelist").innerHTML=more.map(([t,d,u,y])=>`<li><div><h3>${u?`<a href="https://github.com/rezazamani2329/${u}">${t}</a>`:t}</h3><p>${d}</p></div><span class="yr">${y}</span></li>`).join("");
+
+const s=document.getElementById("paths");
+const draw=()=>{
+  const W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+  const rnd=R(20261125),N=W<520?38:70,steps=90,x0=W*0.08,y0=H*0.42,dx=(W*0.98-x0)/steps;
+  const gauss=()=>{let u=rnd()||1e-9,v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
+  let out="";
+  for(let i=0;i<N;i++){
+    let y=y0,d=`M${x0} ${y0}`;
+    for(let t=1;t<=steps;t++){y+=gauss()*H*0.012-H*0.0009;d+=` L${(x0+t*dx).toFixed(1)} ${y.toFixed(1)}`}
+    const hi=i%9===0;
+    out+=`<path d="${d}" fill="none" stroke="${hi?'#7fe0c4':'#3f6f66'}" stroke-opacity="${hi?0.85:0.32}" stroke-width="${hi?1.6:1}"/>`;
+  }
+  out+=`<circle cx="${x0}" cy="${y0}" r="5" fill="#7fe0c4"/>`;
+  out+=`<rect x="0" y="0" width="${W}" height="${H}" fill="url(#fade)"/>`;
+  s.innerHTML=`<defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.45" stop-color="#0b1211" stop-opacity="0"/><stop offset="1" stop-color="#0b1211" stop-opacity="0.92"/></linearGradient></defs>`+out;
+};
+const ro=new ResizeObserver(draw);ro.observe(s);
+
+const words=["quantitative research","financial machine learning","asset pricing","fixed income","economics"];
+const el=document.getElementById("typed");
+const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!still){
+  let w=0,c=words[0].length,del=true;
+  const tick=()=>{
+    const word=words[w];
+    if(del){c--;if(c<0){del=false;w=(w+1)%words.length;c=0}}
+    else{c++;if(c>words[w].length){del=true;setTimeout(tick,1600);return}}
+    el.textContent=words[w].slice(0,Math.max(c,0));
+    setTimeout(tick,del?40:70);
+  };
+  setTimeout(tick,2200);
+}
+}
+</script>
+</body>
+</html>
