@@ -1,6 +1,6 @@
 # Reza Zamani, Ph.D.
 
-**Quantitative Researcher | Financial Machine Learning | Economist**
+**Quantitative Researcher |  Machine Learning | Economist**
 
 🌐 **Website:** [rezazamani2329.github.io](https://rezazamani2329.github.io)
 
