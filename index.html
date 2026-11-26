@@ -124,6 +124,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .cc li{margin:2px 0}
 .en{color:var(--mute);font-size:14px;margin-top:6px}
 .vf{display:inline-block;margin-top:10px;font-size:14px;font-weight:600}
+.photo{position:absolute;right:max(5vw,16px);bottom:clamp(40px,7vw,88px);width:clamp(180px,22vw,280px);aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid var(--acc);box-shadow:0 0 0 10px color-mix(in srgb,var(--acc) 12%,transparent)}
+@media(max-width:820px){.photo{position:static;display:block;width:132px;margin-bottom:22px}}
 footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--mute);font-size:14px}
 @media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.links{gap:14px}.links a{font-size:14px}.hero{min-height:82svh}}
@@ -139,6 +141,7 @@ footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--m
 <header class="hero" id="top">
   <div class="fig"><svg id="paths" aria-hidden="true"></svg></div>
   <div class="txt">
+    <img class="photo" src="reza.jpg" alt="Reza Zamani" width="640" height="640">
     <h1 class="name">Reza<br><span>Zamani.</span></h1>
     <div class="role">I work on <b id="typed">quantitative research</b><span class="cursor"></span></div>
     <div class="chips"><span class="chip">UC Berkeley MFE '27</span><span class="chip">Ph.D. Economics</span><span class="chip">Python · C++ · MATLAB · Stata</span><a class="chip ai" href="#education">AI: Stanford · MIT · Berkeley</a></div>
