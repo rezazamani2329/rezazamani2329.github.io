@@ -194,7 +194,7 @@ footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--m
 
 <section class="band alt" id="papers"><div class="wrap">
   <h2>Papers &amp; publications</h2>
-  <p class="lead" style="margin-top:14px;max-width:62ch">Research in macroeconomics, political economy, public debt, corruption and energy, and more recently quantitative finance and AI/ML, published in English and Persian (Persian titles shown in English translation). Full list on <a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  <p class="lead" style="margin-top:14px;max-width:62ch">Research in macroeconomics, political economy, public debt, corruption and energy, and more recently quantitative finance and AI/ML, published in English and Persian (Persian titles shown in English translation). I have also written many policy reports on Iran's national budget (2005–2017). Full list on <a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
   <div class="filters" id="pubfilters" role="tablist"></div>
   <ol class="pl" id="pubs"></ol>
 </div></section>
@@ -350,14 +350,18 @@ const pubs=[
  ["Journal","2017","Iran's Political Economy Cycles since the Constitutional Revolution, 1907–2012","R. Zamani","Majlis & Rahbord 24(91), 5–34"],
  ["Journal","2017","The Iranian Budgeting System since the Constitutional Revolution: Personal Identity and Inefficient Political Equilibrium","R. Zamani","Economic Strategy 6(22)"],
  ["Journal","2016","Theoretical Foundations of Ineffectiveness and Extra Costs in Development Projects in Iran","D. Aboohamzeh, R. Zamani","Majlis and Rahbord 23(88), 69–106"],
+ ["Journal","2014","Analysis of Iran's Development Pattern between the Two Revolutions Based on Political Economy and Social Order","F. Momeni, R. Zamani","Rahbord (Winter 2014)"],
  ["Journal","2013","Long-term Policy-making Process on Development","F. Momeni, R. Zamani","Majlis and Rahbord 19(72), 5–38"],
+ ["Book","2019","A Philosophical Introduction to the Iranian Pattern of Progress (Vol. 1)","R. Zamani, D. Danesh Jafari","Book series: Conceptual Model of the Islamic-Iranian Pattern of Progress"],
+ ["Book","2019","A Discourse Analysis of Development in Iran and Islam (Vol. 2)","R. Zamani, D. Danesh Jafari","Book series: Conceptual Model of the Islamic-Iranian Pattern of Progress"],
+ ["Book","2019","The Ontology and Axiology of Development (Vol. 3)","R. Zamani, D. Danesh Jafari","Book series: Conceptual Model of the Islamic-Iranian Pattern of Progress"],
  ["Dissertation","2012","Iran's Economic Development over the Last Hundred Years: A Social Order Approach (North, Wallis and Weingast)","R. Zamani","Ph.D. dissertation, Department of Economics"],
  ["Journal","2007","Co-integration Relation for Oil Production under Alternative Hypotheses about OPEC Behavior","A. Hemmati, R. Zamani","Iranian Economic Review 12(1), 27–49"]
 ];
 const pf=document.getElementById("pubfilters"),pl=document.getElementById("pubs");
-const pcats=[["all","All"],["Journal","Journal articles"],["Working paper","Working papers & preprints"],["fa","Papers in Persian"]];
+const pcats=[["all","All"],["Journal","Journal articles"],["Working paper","Working papers & preprints"],["Book","Books"],["fa","Papers in Persian"]];
 const grp=t=>t==="Preprint"?"Working paper":t;
-const isFa=p=>/Economic Research and Perspectives|Fiscal and Economic Policies|Transformation Management|Iranian Journal of Economic Research|Journal of Economic Research|Economic Growth and Development Research|Economics Research|Economic Studies and Policies|Economic Essays|Majlis|Economic Strategy|Political Theory Research|Ph\.D\. dissertation/.test(p[4]);
+const isFa=p=>/Economic Research and Perspectives|Fiscal and Economic Policies|Transformation Management|Iranian Journal of Economic Research|Journal of Economic Research|Economic Growth and Development Research|Economics Research|Economic Studies and Policies|Economic Essays|Majlis|Economic Strategy|Political Theory Research|Rahbord|Book series|Ph\.D\. dissertation/.test(p[4]);
 const inCat=(p,c)=>c==="all"||(c==="fa"?isFa(p):grp(p[0])===c);
 const showPubs=c=>{
   pf.innerHTML=pcats.map(([k,l])=>`<button role="tab" id="p-${k.replace(/ /g,'-')}" aria-selected="${k===c}" data-k="${k}">${l} (${pubs.filter(p=>inCat(p,k)).length})</button>`).join("");
