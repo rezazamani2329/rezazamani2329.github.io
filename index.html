@@ -194,7 +194,7 @@ footer{border-top:1px solid var(--line);padding:26px max(5vw,16px);color:var(--m
 
 <section class="band alt" id="papers"><div class="wrap">
   <h2>Papers &amp; publications</h2>
-  <p class="lead" style="margin-top:14px;max-width:62ch">Research in macroeconomics, political economy, public debt, corruption and energy, and more recently quantitative finance and AI/ML. Full list on <a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  <p class="lead" style="margin-top:14px;max-width:62ch">Research in macroeconomics, political economy, public debt, corruption and energy, and more recently quantitative finance and AI/ML, published in English and Persian (Persian titles shown in English translation). Full list on <a href="https://scholar.google.com/citations?user=PAD64wUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
   <div class="filters" id="pubfilters" role="tablist"></div>
   <ol class="pl" id="pubs"></ol>
 </div></section>
@@ -339,6 +339,7 @@ const pubs=[
  ["Journal","2023","Political Economy of the Budgeting System in Iran: A Social Order Approach (1906–1925)","H. R. Ghasemi, A. A. Yazdi, R. Zamani","Iranian Journal of Economic Research 27(93), 61–104"],
  ["Journal","2022","Proposing a Policy for Debt Management in Iran's Seventh Development Plan","R. Zamani, M. Majidi","Journal of Economic Research 22(87), 193–223"],
  ["Journal","2022","Impact of Export Diversification and Export Composition on Economic Growth of Iran","A. Shakeri, R. Zamani, H. Vartabian Kashani","Economic Growth and Development Research 12(46)"],
+ ["Journal","2022","Analysis of the Formation and Expansion of Suffrage in Iran in the Twentieth Century","R. Zamani","Political Theory Research (Pazhuhesh-e Siasat-e Nazari)"],
  ["Journal","2021","The Effect of Political Instability on Economic Growth in Iran between Two Revolutions (1907–1979)","R. Zamani","Iranian Economic Review 25(4), 777–790"],
  ["Journal","2021","Optimum and Threshold Rates of Government Debt in Iran","R. Zamani, M. Majidi","Economic Growth and Development Research 11(43)"],
  ["Journal","2021","An Estimate of Tax Evasion by Self-employed Businesses in Iran Using the Household Expenditure Survey","R. Zamani, S. Mohsen Pourian","Economics Research 21(83), 75–118"],
@@ -354,11 +355,13 @@ const pubs=[
  ["Journal","2007","Co-integration Relation for Oil Production under Alternative Hypotheses about OPEC Behavior","A. Hemmati, R. Zamani","Iranian Economic Review 12(1), 27–49"]
 ];
 const pf=document.getElementById("pubfilters"),pl=document.getElementById("pubs");
-const pcats=[["all","All"],["Journal","Journal articles"],["Working paper","Working papers & preprints"]];
+const pcats=[["all","All"],["Journal","Journal articles"],["Working paper","Working papers & preprints"],["fa","Papers in Persian"]];
 const grp=t=>t==="Preprint"?"Working paper":t;
+const isFa=p=>/Economic Research and Perspectives|Fiscal and Economic Policies|Transformation Management|Iranian Journal of Economic Research|Journal of Economic Research|Economic Growth and Development Research|Economics Research|Economic Studies and Policies|Economic Essays|Majlis|Economic Strategy|Political Theory Research|Ph\.D\. dissertation/.test(p[4]);
+const inCat=(p,c)=>c==="all"||(c==="fa"?isFa(p):grp(p[0])===c);
 const showPubs=c=>{
-  pf.innerHTML=pcats.map(([k,l])=>`<button role="tab" id="p-${k.replace(/ /g,'-')}" aria-selected="${k===c}" data-k="${k}">${l} (${k==="all"?pubs.length:pubs.filter(p=>grp(p[0])===k).length})</button>`).join("");
-  pl.innerHTML=pubs.filter(p=>c==="all"||grp(p[0])===c).map(([t,y,ti,au,ve])=>`<li><span class="py">${y}</span><div><h3>${ti}</h3><div class="au">${au.replace("R. Zamani","<b>R. Zamani</b>")}</div><div class="ve">${ve}<span class="pt">${t}</span></div></div></li>`).join("");
+  pf.innerHTML=pcats.map(([k,l])=>`<button role="tab" id="p-${k.replace(/ /g,'-')}" aria-selected="${k===c}" data-k="${k}">${l} (${pubs.filter(p=>inCat(p,k)).length})</button>`).join("");
+  pl.innerHTML=pubs.filter(p=>inCat(p,c)).sort((a,b)=>isFa(a)-isFa(b)).map(p=>{const [t,y,ti,au,ve]=p;return `<li><span class="py">${y}</span><div><h3>${ti}</h3><div class="au">${au.replace("R. Zamani","<b>R. Zamani</b>")}</div><div class="ve">${ve}<span class="pt">${t}</span>${isFa(p)?'<span class="pt">In Persian</span>':""}</div></div></li>`}).join("");
 };
 pf.addEventListener("click",ev=>{const bt=ev.target.closest("button");if(bt)showPubs(bt.dataset.k)});
 showPubs("all");
